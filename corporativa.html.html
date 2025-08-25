@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Banca Cooperativa | Banco Stanley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://cdn.prod.website-files.com/63eb5eb57be65bf29901cbda/67b86fd2e1df38ece518c5cd_64afb3ece9077b4cf0ff3b9c_Immobilien_1%2520(1).jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    header {
+      background-color: rgba(12, 2, 49, 0.686);
+      text-align: center;
+      padding: 40px 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ffffff;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(6px);
+    }
+
+    h2 {
+      color: #7961ff;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    /* Contenedor flexible para las imágenes */
+    .imagenes-cooperativa {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .imagenes-cooperativa img {
+      width: 220px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .imagenes-cooperativa img:hover {
+      transform: scale(1.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #888;
+      text-align: left;
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    td[contenteditable="true"] {
+      background-color: rgba(255, 255, 255, 0.15);
+      cursor: text;
+    }
+
+    .totales {
+      font-weight: bold;
+      background-color: rgba(0, 255, 255, 0.2);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #8161ff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #000;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #6c4fff;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(6px);
+    }
+
+    form label {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    form input,
+    form select,
+    form textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 5px;
+      background-color: rgba(0, 0, 0, 0.964);
+      color: rgb(255, 253, 253);
+      font-size: 1rem;
+    }
+
+    form input::placeholder,
+    form textarea::placeholder {
+      color: #ddd;
+    }
+
+    #mensaje-confirmacion {
+      display: none;
+      background-color: rgba(0, 255, 0, 0.2);
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      color: #b6ffb6;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    /* 🔹 Botón flotante de volver al inicio */
+    #btn-inicio {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #8161ff;
+      border: none;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    #btn-inicio:hover {
+      transform: scale(1.1);
+      background-color: #6c4fff;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Banco Stanley</h1>
+    <p>Banca Cooperativa | Comprometidos con tu comunidad</p>
+  </header>
+
+  <div class="container">
+
+    <section>
+      <h2>¿Qué es la Banca Cooperativa?</h2>
+      <p>
+        La banca cooperativa es un modelo financiero que se basa en la colaboración entre miembros de una comunidad para el beneficio mutuo. A diferencia de los bancos tradicionales, la banca cooperativa busca fomentar el desarrollo económico local y la inclusión financiera, brindando servicios adaptados a las necesidades de sus socios.
+      </p>
+      <p>
+        En Banco Stanley, promovemos este modelo para fortalecer las iniciativas comunitarias, ofreciendo productos financieros como microcréditos, cuentas de ahorro solidarias y asesoría personalizada para emprendimientos locales.
+      </p>
+      
+      <div class="video-container">
+        <video controls="" poster="https://media.istockphoto.com/id/1789123613/es/foto/mujer-joven-feliz-de-vacaciones-usando-el-cajero-autom%C3%A1tico.webp?a=1&b=1&s=612x612&w=0&k=20&c=KeU2P05GytXsnCVJZZZfYYdhLiXwuGrh-iGXalZVulM=">
+          <source src="C:\Users\50499\Desktop\videobank3.mp4" type="video/mp4">
+          <source src="C:\Users\DELL\OneDrive\Documentos\carlos rosa\video\baannkk.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video.
+        </video>
+        <div class="video-overlay">
+          <div class="play-button"></div>
+        </div>
+      </div>
+      
+      <div class="imagenes-cooperativa">
+        <img src="https://www.sabermassermas.com/wp-content/uploads/2019/04/dinero-en-su-banco.jpg" alt="Dinero en banco cooperativo">
+        <img src="https://media.istockphoto.com/id/641542076/es/foto/pilas-de-bot%C3%B3n.jpg?s=612x612&w=0&k=20&c=iHDFFpx2TBMeM2GFvQN0V2RbhH4RhGmhSsIWn_deVoA=" alt="Botones apilados">
+        <img src="https://laopinion.com/wp-content/uploads/sites/3/2025/05/retiro-del-banco-dinero-dolares_shutterstock_2510090145.jpg?w=2600" alt="Retiro de dinero">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnCv4zxASqiPehLAS9M6e-kcoeipi5DEcxBGml0NLFAaIUpf2ikJI0q9oVd18wSTj88_U&usqp=CAU" alt="Banca cooperativa comunidad">
+      </div>
+    </section>
+
+    <section>
+      <h2>Beneficios de la Banca Cooperativa</h2>
+      <ul style="margin-bottom: 20px; padding-left: 20px;">
+        <li>Participación democrática: cada socio tiene voz y voto en las decisiones.</li>
+        <li>Intereses más bajos en préstamos y mejores rendimientos en ahorros.</li>
+        <li>Fomento del desarrollo local y la economía solidaria.</li>
+        <li>Apoyo a proyectos comunitarios y microempresas.</li>
+        <li>Transparencia y compromiso social.</li>
+      </ul>
+    </section>
+
+    
+    <section>
+      <h2>Regístrate al Servicio</h2>
+      <p>Déjanos tus datos para que un asesor se comunique contigo.</p>
+
+      <!-- Mensaje de confirmación -->
+      <div id="mensaje-confirmacion">
+        ✅ Tu solicitud se envió correctamente.
+      </div>
+
+      <!-- FORMULARIO CORREGIDO -->
+      <form id="formulario"
+        action="https://formspree.io/f/mjkoneba"
+        method="POST">
+
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" placeholder="Ej: juan@email.com" required>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="Ej: +504 1234-5678" required>
+
+        <label for="servicio">Servicio de interés:</label>
+        <select id="servicio" name="servicio">
+          <option value="credito">Crédito cooperativo</option>
+          <option value="ahorro">Cuenta de ahorro</option>
+          <option value="educacion">Financiamiento educativo</option>
+          <option value="otro">Otro</option>
+        </select>
+
+        <label for="mensaje">Mensaje adicional:</label>
+        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí tu consulta..."></textarea>
+
+        <button type="submit">Enviar Registro</button>
+      </form>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2025 Banco Stanley - Banca Cooperativa | Todos los derechos reservados.
+  </footer>
+
+  <!-- 🔹 Botón volver al index principal -->
+  <button id="btn-inicio" onclick="window.location.href='banco.html.html';">🏠</button>
+
+  <script>
+    // Enviar formulario a Formspree con confirmación
+    document.getElementById("formulario").addEventListener("submit", async function(event) {
+      event.preventDefault(); 
+
+      const form = event.target;
+
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        document.getElementById("mensaje-confirmacion").style.display = "block";
+        form.reset();
+        setTimeout(() => {
+          document.getElementById("mensaje-confirmacion").style.display = "none";
+        }, 4000);
+      } else {
+        alert("❌ Hubo un error al enviar el formulario. Intenta nuevamente.");
+      }
+    });
+  </script>
+
+</body>
+</html>

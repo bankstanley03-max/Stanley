@@ -1,0 +1,894 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bank Stanley - Productos y Servicios</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 20px;
+    }
+
+    .logo {
+      width: 150px;
+      height: 40px;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 8px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav a:hover {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Main Content */
+    main {
+      margin-top: 80px;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: url('img/banco-fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 100px 40px;
+            text-align: center;
+            color: white;
+            position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-20px, -20px) rotate(180deg); }
+    }
+
+    .hero-text {
+      flex: 1;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      color: rgb(249, 249, 250);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: slideInLeft 1s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+      animation: slideInLeft 1s ease-out 0.2s both;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .hero img {
+      width: 300px;
+      height: 200px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      animation: slideInRight 1s ease-out 0.4s both;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .hero img:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Products Section */
+    .productos {
+      background: rgba(255, 255, 255, 0.95);
+      margin: 2rem;
+      border-radius: 20px;
+      padding: 4rem 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .productos h2, .servicios h2, .contacto h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .card:hover::before {
+      left: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 120px;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .card p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-btn, .service-btn {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .card-btn:hover, .service-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      background: linear-gradient(45deg, #5a6fd8, #6a42a0);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      background: white;
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      position: relative;
+      animation: modalSlideIn 0.3s ease-out;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .modal-header h2 {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+    }
+
+    .close {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: #667eea;
+    }
+
+    .modal-body {
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .modal-features {
+      list-style: none;
+      margin: 1rem 0;
+    }
+
+    .modal-features li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .modal-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: bold;
+    }
+
+    .back-to-home {
+      background: linear-gradient(45deg, #28a745, #20c997);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      display: inline-block;
+    }
+
+    .back-to-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+      background: linear-gradient(45deg, #218838, #1ea892);
+    }
+
+    /* Services Section */
+    .servicios {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      margin: 2rem;
+      border-radius: 20px;
+      padding: 4rem 2rem;
+      color: white;
+    }
+
+    .servicios ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .servicios li {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .servicios li:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .servicios h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .servicios p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Contact Section */
+    .contacto {
+      background: rgba(255, 255, 255, 0.95);
+      margin: 2rem;
+      border-radius: 20px;
+      padding: 4rem 2rem;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .contacto p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #666;
+    }
+
+    .contacto a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border: 2px solid #667eea;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .contacto a:hover {
+      background: #667eea;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+      }
+
+      nav a {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .servicios ul {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Loading animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section {
+      animation: fadeIn 0.6s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">Bank Stanley</div>
+      <nav>
+        <ul>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Bank Stanley</h1>
+        <p>Soluciones financieras sólidas para tu futuro.</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1565347878134-064b9185ced8?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Imagen de Banco" />
+    </section>
+    <section id="productos" class="productos section">
+      <h2>Nuestros Productos</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=400&h=200&fit=crop&crop=entropy&auto=format&q=80" alt="Cuenta de Ahorros" />
+          <h3>Cuenta de Ahorro</h3>
+          <p>Segura, rentable y con acceso en línea las 24 horas.</p>
+          <button class="card-btn" onclick="openModal('ahorros')">Ver Detalles</button>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=200&fit=crop&crop=entropy&auto=format&q=80" alt="Tarjeta de Crédito" />
+          <h3>Tarjeta de Crédito</h3>
+          <p>Flexibilidad y beneficios exclusivos para ti.</p>
+          <button class="card-btn" onclick="openModal('credito')">Ver Detalles</button>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=200&fit=crop&crop=entropy&auto=format&q=80" alt="Préstamo Personal" />
+          <h3>Préstamo Personal</h3>
+          <p>Financia tus proyectos con tasas competitivas.</p>
+          <button class="card-btn" onclick="openModal('prestamo')">Ver Detalles</button>
+        </div>
+      </div>
+    </section>
+    <section id="servicios" class="servicios section">
+      <h2>Servicios Destacados</h2>
+      <ul>
+        <li>
+          <h3>Asesoría Financiera</h3>
+          <p>Planes personalizados para tu patrimonio.</p>
+          <button class="service-btn" onclick="openModal('asesoria')">Más Info</button>
+        </li>
+        <li>
+          <h3>Banca en Línea</h3>
+          <p>Administra tus cuentas desde casa.</p>
+          <button class="service-btn" onclick="openModal('banca')">Más Info</button>
+        </li>
+        <li>
+          <h3>Gestión de Patrimonios</h3>
+          <p>Expertos para optimizar tu capital.</p>
+          <button class="service-btn" onclick="openModal('gestion')">Más Info</button>
+        </li>
+      </ul>
+    </section>
+    <section id="contacto" class="contacto section">
+      <h2>Contacto</h2>
+      <p>¿Tienes dudas o quieres agendar una cita?</p>
+      <p>Escríbenos a <a href="mailto:info@bankstanley.com">info@bankstanley.com</a></p>
+       <li><strong>📞 Teléfono:</strong> +1 (800) 123‑4567</li>
+        <li><strong>✉ Email:</strong> contacto@bankstanley.com</li>
+        <li><strong>📍 Dirección:</strong> Av. Principal 123, Ciudad, País</li>
+        <li><strong>🕒 Horarios:</strong> Lunes a Viernes 8:00 AM - 6:00 PM</li>
+      </ul>
+    </div>
+    
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Bank Stanley. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Modals -->
+  <!-- Modal Cuenta de Ahorros -->
+  <div id="ahorrosModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>💰 Cuenta de Ahorro</h2>
+        <span class="close" onclick="closeModal('ahorros')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p>Nuestra Cuenta de Ahorro te ofrece la seguridad y rentabilidad que necesitas para hacer crecer tu dinero.</p>
+        <h4>Beneficios:</h4>
+        <ul class="modal-features">
+          <li>Tasa de interés competitiva del 4.5% anual</li>
+          <li>Sin comisiones de mantenimiento</li>
+          <li>Acceso 24/7 a través de banca en línea</li>
+          <li>Tarjeta de débito incluida</li>
+          <li>Retiros ilimitados en cajeros del banco</li>
+          <li>Apertura desde $500</li>
+        </ul>
+        <p><strong>Requisitos:</strong> Identificación oficial, comprobante de ingresos y depósito inicial mínimo.</p>
+        <button class="back-to-home" onclick="closeModal('ahorros')">← Volver al Inicio</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tarjeta de Crédito -->
+  <div id="creditoModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>💳 Tarjeta de Crédito</h2>
+        <span class="close" onclick="closeModal('credito')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p>Disfruta de la flexibilidad y beneficios exclusivos con nuestra Tarjeta de Crédito Stanley Premium.</p>
+        <h4>Beneficios:</h4>
+        <ul class="modal-features">
+          <li>Línea de crédito hasta $100,000</li>
+          <li>0% interés en los primeros 3 meses</li>
+          <li>Cashback del 2% en todas las compras</li>
+          <li>Meses sin intereses en comercios afiliados</li>
+          <li>Seguro de viaje incluido</li>
+          <li>Programa de puntos y recompensas</li>
+          <li>Sin anualidad el primer año</li>
+        </ul>
+        <p><strong>Requisitos:</strong> Ingresos mínimos de $15,000 mensuales e historial crediticio favorable.</p>
+        <button class="back-to-home" onclick="closeModal('credito')">← Volver al Inicio</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Préstamo Personal -->
+  <div id="prestamoModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🏠 Préstamo Personal</h2>
+        <span class="close" onclick="closeModal('prestamo')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p>Financia tus proyectos más importantes con nuestros préstamos personales a tasas preferenciales.</p>
+        <h4>Beneficios:</h4>
+        <ul class="modal-features">
+          <button class="back-to-home" onclick="closeModal('prestamo')">← Volver al Inicio</button>
+          <li>Montos desde $10,000 hasta $500,000</li>
+          <li>Tasas desde 12% anual fija</li>
+          <li>Plazos de 12 a 60 meses</li>
+          <li>Aprobación en 24 horas</li>
+          <li>Sin comisión por apertura</li>
+          <li>Pagos anticipados sin penalización</li>
+          <li>Domiciliación automática disponible</li>
+        </ul>
+        <p><strong>Usos:</strong> Remodelación, educación, consolidación de deudas, emergencias médicas o cualquier proyecto personal.</p>
+        <button class="back-to-home" onclick="closeModal('prestamo')">← Volver al Inicio</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Asesoría Financiera -->
+  <div id="asesoriaModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📊 Asesoría Financiera</h2>
+        <span class="close" onclick="closeModal('asesoria')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p>Nuestros expertos financieros te ayudan a crear un plan personalizado para alcanzar tus metas económicas.</p>
+        <h4>Servicios incluidos:</h4>
+        <ul class="modal-features">
+          <li>Análisis completo de tu situación financiera</li>
+          <li>Plan de ahorro personalizado</li>
+          <li>Estrategias de inversión</li>
+          <li>Planificación para el retiro</li>
+          <li>Optimización fiscal</li>
+          <li>Seguimiento mensual de objetivos</li>
+          <li>Consultas ilimitadas por teléfono</li>
+        </ul>
+        <p><strong>Ideal para:</strong> Personas que buscan maximizar su patrimonio y planificar su futuro financiero.</p>
+        <button class="back-to-home" onclick="closeModal('asesoria')">← Volver al Inicio</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Banca en Línea -->
+  <div id="bancaModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>💻 Banca en Línea</h2>
+        <span class="close" onclick="closeModal('banca')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p>Administra todas tus cuentas desde la comodidad de tu hogar con nuestra plataforma digital avanzada.</p>
+        <h4>Funcionalidades:</h4>
+        <ul class="modal-features">
+          <li>Consulta de saldos y movimientos en tiempo real</li>
+          <li>Transferencias entre cuentas propias y terceros</li>
+          <li>Pago de servicios y tarjetas de crédito</li>
+          <li>Inversiones en línea</li>
+          <li>Solicitud de estados de cuenta</li>
+          <li>Bloqueo temporal de tarjetas</li>
+          <li>Chat en vivo con ejecutivos</li>
+          <li>App móvil con Touch ID y Face ID</li>
+        </ul>
+        <p><strong>Seguridad:</strong> Encriptación de 256 bits, autenticación de dos factores y monitoreo 24/7.</p>
+        <button class="back-to-home" onclick="closeModal('banca')">← Volver al Inicio</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Gestión de Patrimonios -->
+  <div id="gestionModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>💎 Gestión de Patrimonios</h2>
+        <span class="close" onclick="closeModal('gestion')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p>Servicio premium para clientes con patrimonios importantes que buscan maximizar sus rendimientos.</p>
+        <h4>Servicios exclusivos:</h4>
+        <ul class="modal-features">
+          <li>Gestión profesional de portafolios</li>
+          <li>Acceso a inversiones internacionales</li>
+          <li>Asesor personal dedicado</li>
+          <li>Reportes detallados de rendimiento</li>
+          <li>Planificación sucesoria</li>
+          <li>Servicios bancarios preferenciales</li>
+          <li>Eventos exclusivos para inversionistas</li>
+        </ul>
+        <p><strong>Requisitos:</strong> Patrimonio mínimo de $1,000,000 MXN para acceder a este servicio premium.</p>
+        <button class="back-to-home" onclick="closeModal('gestion')">← Volver al Inicio</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+        header.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+      }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards and sections
+    document.querySelectorAll('.card, .servicios li').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s ease-out';
+      observer.observe(el);
+    });
+
+    // Add click effects to cards
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        // Only add ripple if not clicking a button
+        if (e.target.tagName !== 'BUTTON') {
+          // Create ripple effect
+          const ripple = document.createElement('div');
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+          
+          ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}px;
+            top: ${y}px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: ripple 0.6s ease-out;
+          `;
+          
+          this.style.position = 'relative';
+          this.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
+        }
+      });
+    });
+
+    // Modal Functions
+    function openModal(type) {
+      const modal = document.getElementById(type + 'Modal');
+      if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+      }
+    }
+
+    function closeModal(type) {
+      const modal = document.getElementById(type + 'Modal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }
+    }
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const openModal = document.querySelector('.modal[style*="block"]');
+        if (openModal) {
+          openModal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      }
+    });
+
+    // Make functions global for onclick handlers
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+
+    // Add ripple animation CSS
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        0% {
+          transform: scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

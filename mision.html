@@ -1,0 +1,598 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión del Banco Stanley</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+            color: #003366;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid#003366 ;
+            animation: slideDown 1s ease-out;
+            box-shadow: 0 2px 20px rgba(0, 102, 204, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            color:#003366 ;
+            text-shadow: 0 0 20px rgba(0, 153, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #003366;
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background:#003366 ;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+             background-image: url('img/');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 100px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #003366, #003366);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1.5s ease-out 0.5s both;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            color: #ffffff;
+            opacity: 0.8;
+            animation: fadeInUp 1.5s ease-out 1s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg,#003366, #003366);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 153, 255, 0.3);
+            animation: fadeInUp 1.5s ease-out 1.5s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 153, 255, 0.5);
+        }
+
+        /* Mission Section */
+        .mission-section {
+            padding: 100px 0;
+            background: rgba(240, 248, 255, 0.5);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 60px;
+            color: #003366;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #003366, #003366);
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .mission-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 153, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.1);
+        }
+
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 153, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .mission-card:hover::before {
+            left: 100%;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 153, 255, 0.2);
+            border-color: #003366;
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .mission-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #003366;
+        }
+
+        .mission-card p {
+            line-height: 1.8;
+            color: #2c3e50;
+            opacity: 0.8;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 248, 255, 0.9) 100%);
+        }
+
+        .values-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .value-item {
+            text-align: center;
+            max-width: 250px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .value-item:nth-child(2) {
+            animation-delay: -2s;
+        }
+
+        .value-item:nth-child(3) {
+            animation-delay: -4s;
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #003366, #003366);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2em;
+            box-shadow: 0 10px 30px rgba(0, 153, 255, 0.3);
+        }
+
+        .value-item h4 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #003366;
+        }
+
+        .value-item p {
+            color: #2c3e50;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 2px solid #003366;
+            box-shadow: 0 -5px 20px rgba(0, 102, 204, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #003366;
+        }
+
+        .footer-info {
+            color: #2c3e50;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(0, 153, 255, 0.5);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(0, 153, 255, 0.8);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            
+            .mission-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        
+    </style>
+    <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('banner.jpg'); /* Reemplaza con tu imagen */
+      background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
+      background-position: center; /* Centra la imagen */
+      background-repeat: no-repeat; /* Evita que se repita */
+      height: 100vh; /* Altura completa de la ventana */
+      font-family: Arial, sans-serif;
+      color: rgb(15, 15, 15);
+    }
+
+    .contenido {
+      text-align: center;
+      padding-top: 40vh;
+    }
+  </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <i class="fas fa-university"></i>
+                <div class="logo">Bank Stanley</div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#mision">Misión</a></li>
+                        <li><a href="#valores">Valores</a></li>
+                       
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Nuestra Misión</h1>
+                <p>Construyendo el futuro financiero con confianza e innovación</p>
+                <a href="#mision" class="cta-button">Conoce Más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section" id="mision">
+        <div class="container">
+            <h2 class="section-title">Misión del Banco Stanley</h2>
+            
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <h3>Nuestra Misión Principal</h3>
+                    <p>En Banco Stanley, nos dedicamos a proporcionar soluciones financieras innovadoras y confiables que empoderen a nuestros clientes para alcanzar sus metas financieras. Construimos relaciones duraderas basadas en la confianza, transparencia e integridad, siendo el socio financiero preferido de individuos y empresas.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <h3>Compromiso con la Excelencia</h3>
+                    <p>Nos comprometemos a ofrecer servicios bancarios de clase mundial, utilizando tecnología de vanguardia para brindar experiencias excepcionales. Cada interacción con nuestros clientes refleja nuestro compromiso inquebrantable con la calidad y la excelencia en el servicio.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <h3>Innovación Financiera</h3>
+                    <p>Lideramos la transformación digital del sector bancario, desarrollando productos y servicios que anticipan las necesidades futuras de nuestros clientes. Nuestra innovación constante nos permite ofrecer soluciones financieras que simplifican la vida de las personas y impulsan el crecimiento empresarial.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section" id="valores">
+        <div class="container">
+            <h2 class="section-title">Nuestros Valores</h2>
+            
+            <div class="values-container">
+                <div class="value-item">
+                    <div class="value-icon">🛡️</div>
+                    <h4>Confianza</h4>
+                    <p>Construimos relaciones sólidas basadas en la transparencia y la honestidad en cada transacción.</p>
+                </div>
+                
+                <div class="value-item">
+                    <div class="value-icon">🚀</div>
+                    <h4>Innovación</h4>
+                    <p>Impulsamos el futuro financiero con tecnología avanzada y soluciones creativas.</p>
+                </div>
+                
+                <div class="value-item">
+                    <div class="value-icon">⭐</div>
+                    <h4>Excelencia</h4>
+                    <p>Superamos expectativas en cada servicio, manteniendo los más altos estándares de calidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Banco Stanley</div>
+                <div class="footer-info">
+                    <p>&copy; 2025 Banco Stanley. Todos los derechos reservados.</p>
+                    <p>Comprometidos con tu futuro financiero</p>
+                </div>
+                <center>
+                                <li><a href="inicio.html">
+                            <button>Inicio</button>
+                </center>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 25px rgba(0, 102, 204, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 102, 204, 0.1)';
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe mission cards for animation
+        document.querySelectorAll('.mission-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.8s ease';
+            observer.observe(card);
+        });
+
+        // Observe value items for animation
+        document.querySelectorAll('.value-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = `all 0.8s ease ${index * 0.2}s`;
+            observer.observe(item);
+        });
+
+        // Interactive hover effects
+        document.querySelectorAll('.mission-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Dynamic particle effect (simple)
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = '#0099ff';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.opacity = '0.6';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            particle.style.zIndex = '1';
+            
+            document.body.appendChild(particle);
+            
+            const animation = particle.animate([
+                { transform: 'translateY(0px)', opacity: 0.6 },
+                { transform: `translateY(-${window.innerHeight + 100}px)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'linear'
+            });
+            
+            animation.onfinish = () => particle.remove();
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 300);
+
+        // Add typing effect to hero title
+        const heroTitle = document.querySelector('.hero-content h1');
+        const titleText = heroTitle.textContent;
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < titleText.length) {
+                heroTitle.textContent += titleText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+        
+        setTimeout(typeWriter, 2000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Banca Internacional | Banco Stanley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://cdn.prod.website-files.com/63eb5eb57be65bf29901cbda/67b86fd2e1df38ece518c5cd_64afb3ece9077b4cf0ff3b9c_Immobilien_1%2520(1).jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+    header {
+      background-color: rgba(12, 2, 49, 0.686);
+      text-align: center;
+      padding: 40px 20px;
+      backdrop-filter: blur(4px);
+    }
+    header h1 { font-size: 2.8rem; margin-bottom: 10px; }
+    header p { font-size: 1.2rem; color: #fffefe; }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: rgba(0,0,0,0.5);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(6px);
+    }
+    h2 { color: #7961ff; margin-bottom: 15px; }
+    p { margin-bottom: 15px; line-height: 1.6; }
+    .imagenes-internacional {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .imagenes-internacional img {
+      width: 220px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .imagenes-internacional img:hover { transform: scale(1.05); }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #8161ff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #000;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    button:hover { background-color: #5a3ef5; color: #fff; }
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(6px);
+    }
+    form label { margin-top: 10px; font-weight: bold; }
+    form input, form select, form textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 5px;
+      background-color: rgba(0,0,0,0.95);
+      color: #fff;
+      font-size: 1rem;
+    }
+    form input::placeholder, form textarea::placeholder { color: #ccc; }
+    #mensaje-confirmacion {
+      display: none;
+      background-color: rgba(30, 144, 255, 0.3);
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      color: #003f7f;
+      font-weight: bold;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      background-color: rgba(0,0,0,0.8);
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+    /* 🔹 Botón flotante de volver al inicio */
+    #btn-inicio {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #8161ff;
+      border: none;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Banco Stanley</h1>
+  <p>Banca Internacional | Facilitando tu negocio global</p>
+</header>
+
+<div class="container">
+
+  <section>
+    <h2>¿Qué es la Banca Internacional?</h2>
+    <p>
+      La banca internacional ofrece soluciones financieras para operaciones comerciales y financieras más allá de las fronteras nacionales. Apoyamos a empresas y particulares en transacciones internacionales, cambio de divisas, financiamiento de comercio exterior y más.
+    </p>
+    <p>
+      En Banco Stanley, conectamos tu negocio con el mundo, facilitando pagos internacionales seguros, asesoría en regulaciones globales y acceso a líneas de crédito internacionales.
+    </p>
+
+      <div class="video-container">
+        <video controls="" poster="https://media.istockphoto.com/id/1789123613/es/foto/mujer-joven-feliz-de-vacaciones-usando-el-cajero-autom%C3%A1tico.webp?a=1&b=1&s=612x612&w=0&k=20&c=KeU2P05GytXsnCVJZZZfYYdhLiXwuGrh-iGXalZVulM=">
+          <source src="C:\Users\50499\Desktop\videobank3.mp4" type="video/mp4">
+          <source src="C:\Users\DELL\OneDrive\Documentos\carlos rosa\video\baannkk.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video.
+        </video>
+        <div class="video-overlay">
+          <div class="play-button"></div>
+        </div>
+      </div>
+      
+    <div class="imagenes-internacional">
+      <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=400&q=80" alt="Transacción internacional" />
+      <img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=400&q=80" alt="Puerto de carga" />
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80" alt="Mapa mundial digital" />
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Negocios internacionales" />
+    </div>
+  </section>
+
+  <section>
+    <h2>Beneficios de la Banca Internacional</h2>
+    <ul style="margin-bottom: 20px; padding-left: 20px;">
+      <li>Financiamiento para comercio exterior y proyectos globales.</li>
+      <li>Servicios de cambio y cobertura de divisas.</li>
+      <li>Transferencias internacionales rápidas y seguras.</li>
+      <li>Asesoría en regulaciones y normativas internacionales.</li>
+      <li>Acceso a mercados financieros globales.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Regístrate al Servicio</h2>
+    <p>Déjanos tus datos para que un asesor especializado en banca internacional te contacte.</p>
+
+    <div id="mensaje-confirmacion">✅ Tu solicitud se envió correctamente.</div>
+
+    <form id="formulario" action="https://formspree.io/f/mjkoneba" method="POST">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana López" required />
+
+      <label for="correo">Correo electrónico:</label>
+      <input type="email" id="correo" name="correo" placeholder="Ej: ana@email.com" required />
+
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" placeholder="Ej: +504 1234-5678" required />
+
+      <label for="servicio">Servicio de interés:</label>
+      <select id="servicio" name="servicio">
+        <option value="financiamiento">Financiamiento Comercio Exterior</option>
+        <option value="cambio">Servicios de Cambio</option>
+        <option value="transferencias">Transferencias Internacionales</option>
+        <option value="otro">Otro</option>
+      </select>
+
+      <label for="mensaje">Mensaje adicional:</label>
+      <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí tu consulta..."></textarea>
+
+      <button type="submit">Enviar Registro</button>
+    </form>
+  </section>
+
+</div>
+
+<footer>
+  © 2025 Banco Stanley - Banca Internacional | Todos los derechos reservados.
+</footer>
+
+  <!-- 🔹 Botón volver al index principal -->
+  <button id="btn-inicio" onclick="window.location.href='banco.html.html';">🏠</button>
+
+  
+<script>
+  document.getElementById("formulario").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const form = event.target;
+
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      document.getElementById("mensaje-confirmacion").style.display = "block";
+      form.reset();
+      setTimeout(() => {
+        document.getElementById("mensaje-confirmacion").style.display = "none";
+      }, 4000);
+    } else {
+      alert("❌ Hubo un error al enviar el formulario.");
+    }
+  });
+</script>
+
+</body>
+</html>

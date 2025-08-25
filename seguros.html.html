@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seguros Stanley | Sector Bancario</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Roboto', sans-serif;
+      background: url(https://media.istockphoto.com/id/640267784/es/foto/edificio-del-banco.jpg?s=612x612&w=0&k=20&c=1xlFQ8EoMGrrtsv4Jf_K8TCkg3gMVanWH_bBgWfEefI=) no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 27, 61, 0.75);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto 60px;
+      background-color: rgba(0, 0, 0, 0.488);
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.525);
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(8px);
+      color: #fff;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      user-select: none;
+    }
+
+    header h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 1px 1px 6px #143463;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      color: #fff;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 50px;
+      font-weight: 600;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      position: relative;
+      padding-bottom: 6px;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background-color: #6190f8;
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover, nav a:focus {
+      color: #6190f8;
+    }
+
+    nav a:hover::after, nav a:focus::after {
+      width: 100%;
+    }
+
+    section.cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(26, 60, 114, 0.3);
+      border-radius: 15px;
+      padding: 30px 25px;
+      box-shadow: 0 6px 18px rgba(26, 60, 114, 0.45);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(97, 144, 248, 0.7);
+    }
+
+    .icon {
+      font-size: 48px;
+      color: #ff9800;
+      margin-bottom: 18px;
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+      color: #fff;
+      text-shadow: 0 0 5px #3b5eaa;
+    }
+
+    .card p {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: #fff;
+      flex-grow: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 0.9rem;
+      color: #ccc;
+      user-select: none;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        gap: 20px;
+        font-size: 1rem;
+      }
+
+      section.cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <h1>Seguros Stanley</h1>
+      <p>Protegiendo el sector bancario con soluciones confiables</p>
+    </header>
+
+    <section class="cards" aria-label="Tipos de seguros disponibles">
+      <a href="seguros_infraestructura.html" class="card" tabindex="0" aria-labelledby="infra-title" aria-describedby="infra-desc">
+        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+        <h2 id="infra-title">Seguro de Infraestructura</h2>
+        <p id="infra-desc">Protección integral para edificios, sucursales y equipos bancarios ante incendios, robos y desastres naturales.</p>
+      </a>
+
+      <a href="seguro_civil.html" class="card" tabindex="0" aria-labelledby="respons-title" aria-describedby="respons-desc">
+        <div class="icon"><i class="fas fa-handshake"></i></div>
+        <h2 id="respons-title">Seguro de Responsabilidad Civil</h2>
+        <p id="respons-desc">Cobertura para reclamaciones legales derivadas de operaciones financieras y riesgos comerciales.</p>
+      </a>
+
+      <a href="seguro_vida.html" class="card" tabindex="0" aria-labelledby="vida-title" aria-describedby="vida-desc">
+        <div class="icon"><i class="fas fa-heartbeat"></i></div>
+        <h2 id="vida-title">Seguro de Vida y Salud</h2>
+        <p id="vida-desc">Planes corporativos para proteger a empleados clave con beneficios de salud y vida.</p>
+      </a>
+
+      <a href="seguro_credito.html" class="card" tabindex="0" aria-labelledby="credito-title" aria-describedby="credito-desc">
+        <div class="icon"><i class="fas fa-hand-holding-usd"></i></div>
+        <h2 id="credito-title">Seguro de Crédito</h2>
+        <p id="credito-desc">Protección contra impagos y morosidad, garantizando estabilidad financiera.</p>
+      </a>
+
+      <a href="seguro_internacionales.html" class="card" tabindex="0" aria-labelledby="internacional-title" aria-describedby="internacional-desc">
+        <div class="icon"><i class="fas fa-globe"></i></div>
+        <h2 id="internacional-title">Seguros Internacionales</h2>
+        <p id="internacional-desc">Cobertura para operaciones globales, importaciones, exportaciones y riesgos en el extranjero.</p>
+      </a>
+
+      <a href="seguros_personalizados.html" class="card" tabindex="0" aria-labelledby="personalizados-title" aria-describedby="personalizados-desc">
+        <div class="icon"><i class="fas fa-cogs"></i></div>
+        <h2 id="personalizados-title">Planes Personalizados</h2>
+        <p id="personalizados-desc">Soluciones diseñadas a medida para adaptarse a las necesidades únicas de cada institución bancaria.</p>
+      </a>
+    </section>
+
+    <footer>
+      &copy; 2025 Seguros Stanley &nbsp;&middot;&nbsp; División especializada del Banco Stanley
+    </footer>
+     <center>
+                                <li><a href="inicio.html">
+                            <button>Inicio</button>
+                </center>
+  </div>
+</body>
+</html>

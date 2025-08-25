@@ -1,0 +1,438 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalaciones Banco Azul - Recorrido Virtual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #001f3f, #0074D9, #7FDBFF);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scene.active {
+            opacity: 1;
+        }
+
+        .scene-content {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 31, 63, 0.8);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(127, 219, 255, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .scene h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #7FDBFF, #0074D9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .scene h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #7FDBFF;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .scene p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #B3E5FC;
+        }
+
+        /* Escenas específicas */
+        .scene-1 {
+            background: linear-gradient(rgba(0,31,63,0.6), rgba(0,31,63,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23001f3f" width="1200" height="800"/><rect fill="%230074D9" x="0" y="0" width="1200" height="200"/><rect fill="%237FDBFF" x="400" y="200" width="400" height="400" rx="20"/><rect fill="%23001f3f" x="450" y="250" width="100" height="150" rx="10"/><rect fill="%23001f3f" x="650" y="250" width="100" height="150" rx="10"/><circle fill="%23FFD700" cx="600" cy="100" r="30"/></svg>');
+        }
+
+        .scene-2 {
+            background: linear-gradient(rgba(0,31,63,0.6), rgba(0,31,63,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23001f3f" width="1200" height="800"/><rect fill="%230074D9" x="0" y="600" width="1200" height="200"/><rect fill="%237FDBFF" x="100" y="150" width="200" height="400" rx="10"/><rect fill="%237FDBFF" x="400" y="150" width="200" height="400" rx="10"/><rect fill="%237FDBFF" x="700" y="150" width="200" height="400" rx="10"/><rect fill="%23001f3f" x="120" y="170" width="160" height="50" rx="5"/><rect fill="%23001f3f" x="420" y="170" width="160" height="50" rx="5"/><rect fill="%23001f3f" x="720" y="170" width="160" height="50" rx="5"/></svg>');
+        }
+
+        .scene-3 {
+            background: linear-gradient(rgba(0,31,63,0.6), rgba(0,31,63,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23001f3f" width="1200" height="800"/><rect fill="%230074D9" x="0" y="0" width="1200" height="100"/><rect fill="%237FDBFF" x="200" y="200" width="800" height="400" rx="20"/><rect fill="%23001f3f" x="300" y="250" width="150" height="300" rx="10"/><rect fill="%23001f3f" x="500" y="250" width="150" height="300" rx="10"/><rect fill="%23001f3f" x="700" y="250" width="150" height="300" rx="10"/><circle fill="%23FFD700" cx="600" cy="50" r="25"/></svg>');
+        }
+
+        .scene-4 {
+            background: linear-gradient(rgba(0,31,63,0.6), rgba(0,31,63,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23001f3f" width="1200" height="800"/><rect fill="%230074D9" x="0" y="650" width="1200" height="150"/><rect fill="%237FDBFF" x="150" y="100" width="300" height="500" rx="15"/><rect fill="%237FDBFF" x="550" y="100" width="300" height="500" rx="15"/><rect fill="%23001f3f" x="180" y="150" width="240" height="30" rx="5"/><rect fill="%23001f3f" x="580" y="150" width="240" height="30" rx="5"/><rect fill="%23001f3f" x="180" y="200" width="240" height="30" rx="5"/><rect fill="%23001f3f" x="580" y="200" width="240" height="30" rx="5"/></svg>');
+        }
+
+        .scene-5 {
+            background: linear-gradient(rgba(0,31,63,0.6), rgba(0,31,63,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23001f3f" width="1200" height="800"/><rect fill="%230074D9" x="0" y="0" width="1200" height="150"/><rect fill="%237FDBFF" x="300" y="200" width="600" height="400" rx="20"/><rect fill="%23001f3f" x="400" y="250" width="400" height="250" rx="10"/><rect fill="%23FFD700" x="550" y="300" width="100" height="100" rx="50"/><rect fill="%23001f3f" x="570" y="320" width="60" height="10" rx="5"/><rect fill="%23001f3f" x="570" y="340" width="60" height="10" rx="5"/><rect fill="%23001f3f" x="570" y="360" width="60" height="10" rx="5"/></svg>');
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #0074D9, #7FDBFF);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 116, 217, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 116, 217, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(127, 219, 255, 0.3);
+            z-index: 1000;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0074D9, #7FDBFF);
+            width: 0%;
+            transition: width 1.5s ease;
+        }
+
+        .logo {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0, 31, 63, 0.9);
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 2px solid #7FDBFF;
+        }
+
+        .logo h3 {
+            color: #7FDBFF;
+            font-size: 1.2rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: rgba(127, 219, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(127, 219, 255, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+
+        .feature-card h4 {
+            color: #7FDBFF;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .scene h1 { font-size: 2rem; }
+            .scene h2 { font-size: 1.8rem; }
+            .scene p { font-size: 1.1rem; }
+            .scene-content { padding: 20px; }
+            .controls { flex-wrap: wrap; }
+            .btn { padding: 10px 20px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="logo">
+            <h3>🏦 Bank Stanley</h3>
+        </div>
+
+        <!-- Escena 1: Bienvenida -->
+        <div class="scene scene-1 active" id="scene1">
+            <div class="scene-content">
+                <h1>Bienvenido a Bank Stanley</h1>
+                <p>Descubre nuestras modernas instalaciones diseñadas para brindarte la mejor experiencia bancaria</p>
+                <p>Un recorrido virtual por nuestras áreas de servicio</p>
+            </div>
+        </div>
+
+        <!-- Escena 2: Área de Atención al Cliente -->
+        <div class="scene scene-2" id="scene2">
+            <div class="scene-content">
+                <h2>Área de Atención al Cliente</h2>
+                <p>Nuestro moderno lobby cuenta con:</p>
+                <div class="features">
+                    <div class="feature-card">
+                        <h4>🏪 Ventanillas Modernas</h4>
+                        <p>Equipadas con tecnología de última generación</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🪑 Zona de Espera</h4>
+                        <p>Cómodos asientos con conexión WiFi gratuita</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📱 Pantallas Informativas</h4>
+                        <p>Información actualizada de servicios y promociones</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Escena 3: Zona de Cajeros Automáticos -->
+        <div class="scene scene-3" id="scene3">
+            <div class="scene-content">
+                <h2>Cajeros Automáticos 24/7</h2>
+                <p>Nuestra zona de cajeros ofrece:</p>
+                <div class="features">
+                    <div class="feature-card">
+                        <h4>🏧 Cajeros Inteligentes</h4>
+                        <p>Transacciones rápidas y seguras</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔒 Seguridad Avanzada</h4>
+                        <p>Cámaras de vigilancia y acceso controlado</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>♿ Accesibilidad</h4>
+                        <p>Diseño inclusivo para todos los clientes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Escena 4: Oficinas Privadas -->
+        <div class="scene scene-4" id="scene4">
+            <div class="scene-content">
+                <h2>Oficinas de Asesoría</h2>
+                <p>Espacios privados para consultas especializadas:</p>
+                <div class="features">
+                    <div class="feature-card">
+                        <h4>💼 Asesoría Financiera</h4>
+                        <p>Consultas personalizadas sobre inversiones</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏠 Préstamos Hipotecarios</h4>
+                        <p>Especialistas en financiamiento inmobiliario</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🚗 Créditos Vehiculares</h4>
+                        <p>Financiamiento para tu vehículo ideal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Escena 5: Caja Fuerte -->
+        <div class="scene scene-5" id="scene5">
+            <div class="scene-content">
+                <h2>Caja de Seguridad</h2>
+                <p>Máxima protección para tus valores más importantes:</p>
+                <div class="features">
+                    <div class="feature-card">
+                        <h4>🔐 Seguridad Blindada</h4>
+                        <p>Tecnología de última generación</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎯 Acceso Privado</h4>
+                        <p>Salas individuales para mayor privacidad</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📋 Diferentes Tamaños</h4>
+                        <p>Opciones adaptadas a tus necesidades</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="previousScene()">⬅ Anterior</button>
+        <button class="btn" onclick="toggleAutoplay()" id="playBtn">⏸ Pausar</button>
+        <button class="btn" onclick="nextScene()">Siguiente ➡</button>
+    </div>
+
+    <script>
+        let currentScene = 1;
+        const totalScenes = 5;
+        let isAutoplay = true;
+        let autoplayInterval;
+
+        function updateProgressBar() {
+            const progress = (currentScene / totalScenes) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function showScene(sceneNumber) {
+            // Ocultar todas las escenas
+            document.querySelectorAll('.scene').forEach(scene => {
+                scene.classList.remove('active');
+            });
+            
+            // Mostrar la escena actual
+            document.getElementById('scene' + sceneNumber).classList.add('active');
+            
+            updateProgressBar();
+        }
+
+        function nextScene() {
+            currentScene++;
+            if (currentScene > totalScenes) {
+                currentScene = 1;
+            }
+            showScene(currentScene);
+        }
+
+        function previousScene() {
+            currentScene--;
+            if (currentScene < 1) {
+                currentScene = totalScenes;
+            }
+            showScene(currentScene);
+        }
+
+        function toggleAutoplay() {
+            const playBtn = document.getElementById('playBtn');
+            
+            if (isAutoplay) {
+                clearInterval(autoplayInterval);
+                playBtn.textContent = '▶ Reproducir';
+                playBtn.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+                isAutoplay = false;
+            } else {
+                startAutoplay();
+                playBtn.textContent = '⏸ Pausar';
+                playBtn.style.background = 'linear-gradient(45deg, #0074D9, #7FDBFF)';
+                isAutoplay = true;
+            }
+        }
+
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                nextScene();
+            }, 4000);
+        }
+
+        // Inicializar el video
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgressBar();
+            startAutoplay();
+        });
+
+        // Controles de teclado
+        document.addEventListener('keydown', function(event) {
+            switch(event.key) {
+                case 'ArrowLeft':
+                    previousScene();
+                    break;
+                case 'ArrowRight':
+                    nextScene();
+                    break;
+                case ' ':
+                    event.preventDefault();
+                    toggleAutoplay();
+                    break;
+            }
+        });
+
+        // Agregar efectos de partículas
+        function createParticles() {
+            const container = document.querySelector('.video-container');
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.width = Math.random() * 4 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = '#7FDBFF';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animation = float ${Math.random() * 10 + 5}s ease-in-out infinite;
+                particle.style.zIndex = '1';
+                
+                container.appendChild(particle);
+                
+                // Eliminar la partícula después de un tiempo
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 15000);
+            }
+        }
+
+        // Crear partículas cada 5 segundos
+        setInterval(createParticles, 5000);
+        createParticles(); // Crear partículas iniciales
+    </script>
+</body>
+</html>
