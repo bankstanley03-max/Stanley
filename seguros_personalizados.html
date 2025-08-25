@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Planes Personalizados - Seguros Stanley</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;  
+      background: url('https://cdn.prod.website-files.com/63eb5eb57be65bf29901cbda/67b86fd2e1df38ece518c5cd_64afb3ece9077b4cf0ff3b9c_Immobilien_1%2520(1).jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    header {
+      background-color: rgba(0, 51, 102, 0.85);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .info img {
+      max-width: 400px;
+      width: 100%;
+      border-radius: 10px;
+      margin: 10px auto;
+      display: block;
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    form input, form textarea, form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: rgba(255,255,255,0.8);
+      color: #000;
+    }
+
+    form textarea {
+      resize: vertical;
+    }
+
+    form button {
+      background-color: #003366;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #0055aa;
+    }
+
+    #mensaje-confirmacion {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background-color: rgba(0, 128, 0, 0.85);
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      animation: fadeInOut 4s ease-in-out;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    footer {
+      background-color: rgba(0, 51, 102, 0.85);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* 🔹 Botón flotante de volver al inicio */
+    #btn-inicio {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #8161ff;
+      border: none;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Planes Personalizados</h1>
+    <p>Crea un seguro a tu medida con la asesoría de Seguros Stanley</p>
+  </header>
+
+  <main>
+    <section class="info">
+      <div>
+        <h2>¿Qué son los Planes Personalizados?</h2>
+        <p>Un plan personalizado de <strong>Seguros Stanley</strong> adapta la protección a tus necesidades reales, tomando en cuenta riesgos, rubro y presupuesto.</p>
+      </div>
+
+      <div class="video-container">
+        <video controls="" poster="https://media.istockphoto.com/id/1789123613/es/foto/mujer-joven-feliz-de-vacaciones-usando-el-cajero-autom%C3%A1tico.webp?a=1&b=1&s=612x612&w=0&k=20&c=KeU2P05GytXsnCVJZZZfYYdhLiXwuGrh-iGXalZVulM=">
+          <source src="C:\Users\50499\Desktop\videobank3.mp4" type="video/mp4">
+          <source src="C:\Users\DELL\OneDrive\Documentos\carlos rosa\video\baannkk.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video.
+        </video>
+        <div class="video-overlay">
+          <div class="play-button"></div>
+        </div>
+      </div>
+      
+      <center>
+        <img src="https://us.123rf.com/450wm/peopleimages12/peopleimages122207/peopleimages12220735298/189703876-yes-that-the-strategy-we-should-use-two-work-colleagues-reading-over-some-documents-together.jpg?ver=6" alt="Planes personalizados de seguros">
+        <img src="https://www.aprendeycrece.hn/Data/img/contenidos/banca_consideraciones.png" alt="Planes personalizados de seguros">
+        <img src="https://thumbs.dreamstime.com/b/feliz-pareja-joven-planificación-embarazo-y-visitar-su-médico-familiar-juntos-no-te-preocupes-est%C3%A1s-en-buenas-manos-tocando-211956899.jpg" alt="Planes personalizados de seguros">
+        <img src="https://st3.depositphotos.com/2309453/15162/i/450/depositphotos_151626284-stock-photo-young-married-couple-in-a.jpg" alt="Planes personalizados de seguros">
+      </center>
+    </section>
+
+    <section>
+      <h2>Solicita tu plan personalizado</h2>
+      <form id="formulario" action="https://formspree.io/f/mjkoneba" method="POST">
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required>
+
+        <label for="tipo">Tipo de coberturas que deseas incluir:</label>
+        <select id="tipo" name="tipo" required>
+          <option value="">Seleccione una opción</option>
+          <option value="vida">Vida</option>
+          <option value="salud">Salud</option>
+          <option value="hogar">Hogar</option>
+          <option value="auto">Auto</option>
+          <option value="negocio">Negocio</option>
+          <option value="combinado">Combinado (varios tipos)</option>
+        </select>
+
+        <label for="mensaje">Describe tu situación y qué tipo de protección deseas:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <button type="submit">Enviar solicitud</button>
+      </form>
+
+      <div id="mensaje-confirmacion">
+        ✅ Gracias. Hemos recibido tu solicitud personalizada correctamente.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Seguros Stanley. Todos los derechos reservados.
+  </footer>
+  
+  <!-- 🔹 Botón volver al index principal -->
+  <button id="btn-inicio" onclick="window.location.href='seguros.html.html';">🏠</button>
+
+  <script>
+    const formulario = document.getElementById('formulario');
+    const mensaje = document.getElementById('mensaje-confirmacion');
+
+    formulario.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const data = new FormData(formulario);
+      const response = await fetch(formulario.action, {
+        method: formulario.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        formulario.reset();
+        mensaje.style.display = 'block';
+        setTimeout(() => {
+          mensaje.style.display = 'none';
+        }, 4000);
+      } else {
+        alert("❌ Hubo un error al enviar la solicitud. Intenta de nuevo.");
+      }
+    });
+  </script>
+
+</body>
+</html>

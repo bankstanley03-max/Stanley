@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banco Stanley | Banca Empresarial</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Fondo desenfocado */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(https://media.istockphoto.com/id/644191738/es/foto/se%C3%B1al-de-banco.jpg?s=612x612&w=0&k=20&c=uyxv7EarIVvIxZ4mkO6s55uyWmPrhp9zDtL8gYZtPe4=) no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(8px);
+      z-index: -1;
+    }
+
+    header {
+      background: rgba(16, 27, 70, 0.385);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    nav {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff9800;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      display: block;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      color: white;
+      text-decoration: none;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: #ff9800;
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #131e4e8a;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <h1>Banco Stanley</h1>
+    <p>Soluciones Empresariales a tu Alcance</p>
+  </header>
+
+  <section>
+    <a href="corporativa.html.html" class="card">
+      <div class="icon"><i class="fas fa-building"></i></div>
+      <h2>Banca Corporativa</h2>
+      <p>Ofrecemos financiamiento estratégico, fusiones y adquisiciones, y soluciones para grandes empresas e instituciones financieras.</p>
+    </a>
+
+    <a href="comercial.html.html" class="card">
+      <div class="icon"><i class="fas fa-briefcase"></i></div>
+      <h2>Banca Comercial</h2>
+      <p>Soluciones para PYMEs: préstamos, cuentas empresariales, tarjetas corporativas y servicios de cobro automático.</p>
+    </a>
+
+    <a href="inversion.html.html" class="card">
+      <div class="icon"><i class="fas fa-chart-line"></i></div>
+      <h2>Banca de Inversión</h2>
+      <p>Asesoría en mercados de capital, estructuración de bonos y valores, manejo de portafolios y expansión internacional.</p>
+    </a>
+
+    <a href="internacional.html.html" class="card">
+      <div class="icon"><i class="fas fa-globe"></i></div>
+      <h2>Banca Internacional</h2>
+      <p>Apoyo en comercio exterior, transferencias globales, financiamiento de exportaciones e importaciones y divisas.</p>
+    </a>
+
+    <a href="tesoreria.html.html" class="card">
+      <div class="icon"><i class="fas fa-coins"></i></div>
+      <h2>Gestión de Tesorería</h2>
+      <p>Plataformas digitales para el control de flujo de caja, pagos masivos, inversiones temporales y administración financiera.</p>
+    </a>
+
+    <a href="fidusiario.html.html" class="card">
+      <div class="icon"><i class="fas fa-lock"></i></div>
+      <h2>Servicios Fiduciarios</h2>
+      <p>Administración de fideicomisos, custodia de activos y planificación patrimonial segura para empresas.</p>
+    </a>
+  </section>
+
+  <footer>
+    &copy; 2025 Banco Stanley | Todos los derechos reservados.
+  </footer>
+ <center>
+                                <li><a href="inicio.html">
+                            <button>Inicio</button>
+                </center>
+</body>
+</html>

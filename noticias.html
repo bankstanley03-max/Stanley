@@ -1,0 +1,739 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgan Stanley - Noticias Importantes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e1f5fe 100%);
+            color:#003366 ;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #003366 0%, #003366 100%);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: linear-gradient(135deg, #003366 0%, #003366 100%);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: #003366;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #003366;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #3b82f6, #003366);
+            border-radius: 2px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 30px;
+        }
+
+        .news-tag {
+            display: inline-block;
+            background: linear-gradient(45deg, #3b82f6, #003366);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .news-date {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+
+        .news-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #003366;
+            font-weight: 600;
+        }
+
+        .news-card p {
+            color: #475569;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            color: #003366;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            gap: 8px;
+        }
+
+        .read-more:hover {
+            color:#003366 ;
+            transform: translateX(5px);
+        }
+
+        /* Market Data Section */
+        .market-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e1f5fe 100%);
+            padding: 80px 0;
+        }
+
+        .market-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .market-item {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .market-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .market-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #3b82f6,#003366 );
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .market-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+
+        .market-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Featured News */
+        .featured-news {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .featured-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .featured-card:nth-child(even) {
+            direction: rtl;
+        }
+
+        .featured-card:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+        }
+
+        .featured-content h3 {
+            font-size: 2rem;
+            color: #003366;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .featured-content p {
+            color: #475569;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #003366 0%, #003366 100%);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .market-data {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-card {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .featured-card:nth-child(even) {
+                direction: ltr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bounce-in {
+            animation: bounceIn 0.8s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            border-top-color: #003366;;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-img">BS</div>
+                    <h1>Bank Stanley</h1>
+                </div>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#noticias">Noticias</a></li>
+                        <li><a href="#mercados">Mercados</a></li>
+                        <li><a href="#destacadas">Destacadas</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="bounce-in">Noticias Bank Stanley</h2>
+                <p class="fade-in">Mantente actualizado con las últimas noticias, análisis y tendencias del mercado financiero global</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item fade-in">
+                        <span class="stat-number">$1.2T</span>
+                        <span class="stat-label">Activos Gestionados</span>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <span class="stat-number">75+</span>
+                        <span class="stat-label">Países</span>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <span class="stat-number">85,000+</span>
+                        <span class="stat-label">Empleados</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="news-section" id="noticias">
+        <div class="container">
+            <h2 class="section-title">Últimas Noticias</h2>
+            
+            <div class="news-grid">
+                <article class="news-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1226&q=80" alt="Inversión tecnológica" class="news-image">
+                    <div class="news-content">
+                        <div class="news-tag">INVERSIÓN</div>
+                        <div class="news-date">16 Julio 2025</div>
+                        <h3>Bank Stanley Invierte $125M en FreshBooks</h3>
+                        <p>Los fondos administrados por Bank Stanley Expansion Capital han proporcionado $125 millones en financiamiento de deuda senior a FreshBooks, líder en software de contabilidad basado en la nube.</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Liderazgo ejecutivo" class="news-image">
+                    <div class="news-content">
+                        <div class="news-tag">LIDERAZGO</div>
+                        <div class="news-date">15 Julio 2025</div>
+                        <h3>Reorganización en Banca de Inversión Tecnológica</h3>
+                        <p>Bank Stanley ha nombrado a Carlos Soto como co-director global de banca de inversión tecnológica como parte de una reorganización estratégica.</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Análisis de mercado" class="news-image">
+                    <div class="news-content">
+                        <div class="news-tag">MERCADOS</div>
+                        <div class="news-date">14 Julio 2025</div>
+                        <h3>Perspectivas del Mercado de Capitales 2025</h3>
+                        <p>Las operaciones estratégicas y las fusiones están preparadas para crecer en 2025. Con la moderación de la inflación, las empresas ganan más apetito para eventos estratégicos.</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Análisis bancario" class="news-image">
+                    <div class="news-content">
+                        <div class="news-tag">ANÁLISIS</div>
+                        <div class="news-date">13 Julio 2025</div>
+                        <h3>Tendencias de la Industria Bancaria</h3>
+                        <p>La industria bancaria de EE.UU. podría comenzar una nueva ola de consolidación ya que los reguladores se vuelven más favorables a las operaciones.</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1406&q=80" alt="Mercados globales" class="news-image">
+                    <div class="news-content">
+                        <div class="news-tag">GLOBAL</div>
+                        <div class="news-date">12 Julio 2025</div>
+                        <h3>Perspectiva de Inversión Global de Medio Año</h3>
+                        <p>Mientras la economía global absorbe el impacto de la nueva política comercial, es probable que 2025 vea una desaceleración pero evite una recesión.</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Reestructuración corporativa" class="news-image">
+                    <div class="news-content">
+                        <div class="news-tag">CORPORATIVO</div>
+                        <div class="news-date">10 Julio 2025</div>
+                        <h3>Reestructuración Organizacional</h3>
+                        <p>Bank Stanley implementa una reorganización estratégica como parte de su plan de optimización operacional para mejorar la eficiencia.</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="market-section" id="mercados">
+        <div class="container">
+            <h2 class="section-title">Datos del Mercado</h2>
+            <div class="market-data">
+                <div class="market-item fade-in">
+                    <div class="market-icon">📈</div>
+                    <div class="market-value" id="stock-price">$98.50</div>
+                    <div class="market-label">Precio de Acción MS</div>
+                </div>
+                <div class="market-item fade-in">
+                    <div class="market-icon">💰</div>
+                    <div class="market-value" id="market-cap">$165.2B</div>
+                    <div class="market-label">Capitalización de Mercado</div>
+                </div>
+                <div class="market-item fade-in">
+                    <div class="market-icon">📊</div>
+                    <div class="market-value" id="pe-ratio">15.2</div>
+                    <div class="market-label">Ratio P/E</div>
+                </div>
+                <div class="market-item fade-in">
+                    <div class="market-icon">💵</div>
+                    <div class="market-value" id="dividend">$3.20</div>
+                    <div class="market-label">Dividendo Anual</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-news" id="destacadas">
+        <div class="container">
+            <h2 class="section-title">Noticias Destacadas</h2>
+            
+            <div class="featured-card fade-in">
+                <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Expansión global" class="featured-image">
+                <div class="featured-content">
+                    <h3>Expansión Global de Morgan Stanley</h3>
+                    <p>Bank Stanley continúa su expansión global con nuevas oficinas en mercados emergentes clave. La firma ha anunciado planes para fortalecer su presencia en Asia-Pacífico y América Latina, con el objetivo de capturar oportunidades de crecimiento en estos mercados dinámicos.</p>
+                    <a href="#" class="read-more">Leer artículo completo →</a>
+                </div>
+            </div>
+
+            <div class="featured-card fade-in">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Innovación tecnológica" class="featured-image">
+                <div class="featured-content">
+                    <h3>Innovación Tecnológica en Servicios Financieros</h3>
+                    <p>La firma está invirtiendo fuertemente en tecnología financiera e inteligencia artificial para mejorar sus servicios. Estas inversiones incluyen plataformas de trading algorítmico, análisis predictivo y automatización de procesos.</p>
+                    <a href="#" class="read-more">Leer artículo completo →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sobre Bank Stanley</h4>
+                    <p>Firma líder global de servicios financieros que proporciona banca de inversión, gestión de patrimonio y servicios de inversión a corporaciones, gobiernos e individuos.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <p><a href="#">Banca de Inversión</a></p>
+                    <p><a href="#">Gestión de Patrimonio</a></p>
+                    <p><a href="#">Gestión de Inversiones</a></p>
+                    <p><a href="#">Análisis de Mercado</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>La Lima, Col.Rvieralta calle 3</p>
+                    <p>Tel: +504 9799-6234</p>
+                    <p><a href="#">investor.relations@morganstanley.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <p><a href="#">LinkedIn</a></p>
+                    <p><a href="#">Twitter</a></p>
+                    <p><a href="#">YouTube</a></p>
+                    <p><a href="#">Instagram</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bank Stanley. Todos los derechos reservados.</p>
+            </div>
+        </div>
+         <center>
+    <li><a href="inicio.html">
+                            <button>Inicio</button>
+    </center>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animated counters
+        function animateValue(element, start, end, duration) {
+            const startTime = performance.now();
+            const startValue = start;
+            const endValue = end;
+            
+            function updateValue(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                const current = startValue + (endValue - startValue) * progress;
+                
+                if (element.id === 'stock-price') {
+                    element.textContent = '$' + current.toFixed(2);
+                } else if (element.id === 'market-cap') {
+                    element.textContent = '$' + current.toFixed(1) + 'B';
+                } else if (element.id === 'pe-ratio') {
+                    element.textContent = current.toFixed(1);
+                } else if (element.id === 'dividend') {
+                    element.textContent = '$' + current.toFixed}
